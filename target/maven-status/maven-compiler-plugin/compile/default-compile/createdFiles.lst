@@ -1,0 +1,12 @@
+com\cd\coe\controller\BookController.class
+com\cd\coe\dao\AbstractDao.class
+com\cd\coe\configuration\AppConfig.class
+com\cd\coe\dao\UserDao.class
+com\cd\coe\dao\UserDaoImpl.class
+com\cd\coe\configuration\AppInitializer.class
+com\cd\coe\configuration\PersistenceJPAConfig.class
+com\cd\coe\service\UserService.class
+com\cd\coe\controller\AppController.class
+com\cd\coe\configuration\HibernateConfiguration.class
+com\cd\coe\model\User.class
+com\cd\coe\service\UserServiceImpl.class
