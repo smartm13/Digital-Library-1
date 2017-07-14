@@ -21,18 +21,18 @@ public class User {
 	private int userMasterID;
 	
 	@Size(min=3, max=50)
-	@Column(name = "userFirstName", nullable = false)
+	@Column(name = "userFirstName", nullable = true)
 	private String userFirstName;
 
 	@Size(min=3, max=50)
-	@Column(name = "userLastName", nullable = false)
+	@Column(name = "userLastName", nullable = true)
 	private String userLastName;
 
 	@Size(min=3, max=50)
 	@Column(name = "username", nullable = false)
 	private String username;
 	
-	@Column(name = "userEmail", nullable = false)
+	@Column(name = "userEmail", nullable = true)
 	private String userEmail;
 	
 	@Size(min=3, max=50)
@@ -40,11 +40,11 @@ public class User {
 	private String userPwd;
 	
 	@NotNull
-	@Column(name = "userContact", unique=true, nullable = false)
+	@Column(name = "userContact", unique=true, nullable = true)
 	private int userContact;
 	
 	@NotNull
-	@Column(name = "userType", nullable = false)
+	@Column(name = "userType", nullable = true)
 	private int userType;
 
 	public int getUserMasterID() {
@@ -91,7 +91,7 @@ public class User {
 		return userPwd;
 	}
 
-	public void setUserPwd(String userPwd) {
+	public  void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
 
