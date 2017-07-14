@@ -2,6 +2,7 @@ package com.cd.coe.controller;
 
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +30,40 @@ public class AppController {
 	/*
 	 * This method will list all existing employees.
 	 */
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/","/login" }, method = RequestMethod.GET)
 	public String loginUser(ModelMap model) {
 		User user = new User();
-		model.addAttribute("login", user);
+		model.addAttribute("user", user);
+//		model.addAttribute("message",message)
 		return "login";
 	}
-
+	
+		@RequestMapping(value = { "/" ,"/login"}, method = RequestMethod.POST)
+	public String entryUser(HttpServletRequest request, @Valid User user, BindingResult result,
+			ModelMap model) {
+		System.out.println(user);
+		
+		
+		
+		boolean userExists = service.checkLogin(user.getUsername(),
+                user.getUserPwd());
+		if(userExists){
+			model.put("user", user);
+			System.out.println("Success!!!!");
+			return "homepage";
+		}else{
+			System.out.println("Failure!!!!");
+			String msg = "Incorrect User!";
+			request.setAttribute("error-msg", msg);
+			request.setAttribute("error", Boolean.TRUE);
+			//model.put("error", msg);
+			return "login";
+		}
+		}
+		
+	
+		
+		
 	/*
 	 * This method will provide the medium to add a new employee.
 	 */
@@ -55,14 +83,14 @@ public class AppController {
 			ModelMap model) {
 
 		if (result.hasErrors()) {
-			return "register";
+			return "loginWrong";
 		}
 
 		
 		service.saveUser(user);
 
 		model.addAttribute("success", "user" +user.getUserFirstName() + " registered successfully");
-		return "success";
+		return "redirect:/login";
 	}
 
 

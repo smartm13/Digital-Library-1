@@ -8,5 +8,6 @@ public interface UserDao {
 	
 
 	void saveUser(User user);
+	public boolean checkLogin(String userName, String userPassword);
 	
 }

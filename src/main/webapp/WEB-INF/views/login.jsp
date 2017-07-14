@@ -24,12 +24,12 @@
 
 					</div>
 					<div class="panel-body">
-						<form:form method="POST"  modelAttribute="login">
+						<form:form method="POST"  modelAttribute="user">
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-3 control-label">UserName</label>
 								<div class="col-sm-9">
 									<form:input path="username" type="text" class="form-control"
-										id="username" placeholder="Username" required="" />
+										id="userName" placeholder="username" required="" />
 								</div>
 							</div>
 							<br></br>
@@ -40,6 +40,21 @@
 										placeholder="Password" required="" path="userPwd" id="Password"/>
 								</div>
 							</div>
+							
+
+							<%
+							if(request.getAttribute("error")!=null){
+							boolean error = (Boolean) request.getAttribute("error");
+							String  msg = (String) request.getAttribute("error-msg");
+							if(error){ %>
+								<p>Test</p>
+								<div class="alert alert-danger alert-dismissable">
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<% out.write(msg);%></div>
+							<%	
+							}
+							}
+							%>
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-9">
 									<div class="checkbox">
@@ -58,6 +73,8 @@
 							</div>
 						</form:form>
 					</div>
+					
+					
 					<div class="panel-footer">
 						Not Registered? <a href="register" class="">Register here</a>
 					</div>

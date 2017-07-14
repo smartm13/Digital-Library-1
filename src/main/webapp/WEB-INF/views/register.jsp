@@ -95,7 +95,7 @@
 							<div class="form-group last">
 								<div class="col-sm-offset-3 col-sm-9">
 									<button type="submit" class="btn btn-success btn-sm"
-										value="Register">Sign in</button>
+										value="Register">Register</button>
 								</div>
 							</div>
 						</form:form>
